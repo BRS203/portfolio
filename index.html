@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moje Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <!-- NAVBAR -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">👨‍💻 Moje Portfolio</h1>
+      <nav class="space-x-4">
+        <a href="#about" class="hover:text-blue-500">O mnie</a>
+        <a href="#projects" class="hover:text-blue-500">Projekty</a>
+        <a href="#skills" class="hover:text-blue-500">Umiejętności</a>
+        <a href="#contact" class="hover:text-blue-500">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="bg-blue-600 text-white text-center py-20">
+    <h2 class="text-4xl font-bold mb-4">Cześć! Jestem początkującym web developerem 🚀</h2>
+    <p class="text-lg mb-6">Tworzę nowoczesne i responsywne strony internetowe.</p>
+    <a href="#contact" class="bg-white text-blue-600 font-semibold py-2 px-4 rounded shadow hover:bg-gray-100 transition">Zatrudnij mnie</a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-16 px-6 bg-white">
+    <div class="max-w-3xl mx-auto text-center">
+      <h3 class="text-3xl font-bold mb-4">O mnie</h3>
+      <p class="text-gray-700">
+        Mówią na mnie BRS, uczę się front-endu i szukam pierwszych zleceń jako freelancer. Lubię tworzyć rzeczy, które są proste, funkcjonalne i dobrze wyglądają.
+      </p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="py-16 px-6 bg-gray-100">
+    <div class="max-w-5xl mx-auto">
+      <h3 class="text-3xl font-bold text-center mb-10">Projekty</h3>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded shadow p-5">
+          <h4 class="text-xl font-semibold mb-2">Projekt 1</h4>
+          <p class="text-gray-600">Opis projektu, co zrobiłeś, jakich technologii użyłeś.</p>
+        </div>
+        <div class="bg-white rounded shadow p-5">
+          <h4 class="text-xl font-semibold mb-2">Projekt 2</h4>
+          <p class="text-gray-600">Opis projektu, co zrobiłeś, jakich technologii użyłeś.</p>
+        </div>
+        <div class="bg-white rounded shadow p-5">
+          <h4 class="text-xl font-semibold mb-2">Projekt 3</h4>
+          <p class="text-gray-600">Opis projektu, co zrobiłeś, jakich technologii użyłeś.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="py-16 px-6 bg-white">
+    <div class="max-w-3xl mx-auto text-center">
+      <h3 class="text-3xl font-bold mb-6">Umiejętności</h3>
+      <ul class="flex flex-wrap justify-center gap-4 text-blue-700 font-semibold">
+        <li class="bg-blue-100 px-4 py-2 rounded">HTML</li>
+        <li class="bg-blue-100 px-4 py-2 rounded">CSS</li>
+        <li class="bg-blue-100 px-4 py-2 rounded">JavaScript</li>
+        <li class="bg-blue-100 px-4 py-2 rounded">Tailwind CSS</li>
+        <li class="bg-blue-100 px-4 py-2 rounded">Git</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-16 px-6 bg-gray-100">
+    <div class="max-w-md mx-auto text-center">
+      <h3 class="text-3xl font-bold mb-4">Kontakt</h3>
+      <p class="mb-6 text-gray-700">Jesteś zainteresowany współpracą? Napisz do mnie!</p>
+      <a href="mailto:twojemail@example.com" class="inline-block bg-blue-600 text-white px-6 py-3 rounded shadow hover:bg-blue-700 transition">
+        Napisz maila
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="text-center py-6 text-sm text-gray-500">
+    © 2025 [Twoje Imię]. Wszelkie prawa zastrzeżone.
+  </footer>
+
+</body>
+</html>
