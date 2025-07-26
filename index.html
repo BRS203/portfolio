@@ -5,87 +5,170 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Moje Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
+      color: #e6e6e6;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 9999px;
+      background: rgba(255, 215, 0, 0.3);
+      border: 1px solid rgba(255, 215, 0, 0.6);
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+      backdrop-filter: blur(2px);
+      animation: floatUp linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-200px) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .bubble:nth-child(n) {
+      width: 12px;
+      height: 12px;
+      animation-duration: 6s;
+    }
+    .bubble:nth-child(3n) {
+      width: 8px;
+      height: 8px;
+      animation-duration: 4s;
+      animation-delay: 1s;
+    }
+    .bubble:nth-child(4n) {
+      width: 10px;
+      height: 10px;
+      animation-duration: 5s;
+      animation-delay: 0.5s;
+    }
+    .bubble:nth-child(5n) {
+      width: 14px;
+      height: 14px;
+      animation-duration: 4.5s;
+      animation-delay: 0.8s;
+    }
+
+    header, section, footer {
+      position: relative;
+      z-index: 10;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans">
+<body class="font-sans">
+
+  <!-- DUŻO BĄBELKÓW -->
+  <div class="bubble" style="left: 5%"></div>
+  <div class="bubble" style="left: 10%"></div>
+  <div class="bubble" style="left: 15%"></div>
+  <div class="bubble" style="left: 20%"></div>
+  <div class="bubble" style="left: 25%"></div>
+  <div class="bubble" style="left: 30%"></div>
+  <div class="bubble" style="left: 35%"></div>
+  <div class="bubble" style="left: 40%"></div>
+  <div class="bubble" style="left: 45%"></div>
+  <div class="bubble" style="left: 50%"></div>
+  <div class="bubble" style="left: 55%"></div>
+  <div class="bubble" style="left: 60%"></div>
+  <div class="bubble" style="left: 65%"></div>
+  <div class="bubble" style="left: 70%"></div>
+  <div class="bubble" style="left: 75%"></div>
+  <div class="bubble" style="left: 80%"></div>
+  <div class="bubble" style="left: 85%"></div>
+  <div class="bubble" style="left: 90%"></div>
+  <div class="bubble" style="left: 95%"></div>
 
   <!-- NAVBAR -->
-  <header class="bg-white shadow-md sticky top-0 z-50">
+  <header class="bg-black bg-opacity-30 shadow-md sticky top-0 z-50 text-yellow-400">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
       <h1 class="text-2xl font-bold">👨‍💻 Moje Portfolio</h1>
       <nav class="space-x-4">
-        <a href="#about" class="hover:text-blue-500">O mnie</a>
-        <a href="#projects" class="hover:text-blue-500">Projekty</a>
-        <a href="#skills" class="hover:text-blue-500">Umiejętności</a>
-        <a href="#contact" class="hover:text-blue-500">Kontakt</a>
+        <a href="#about" class="hover:text-yellow-300">O mnie</a>
+        <a href="#projects" class="hover:text-yellow-300">Projekty</a>
+        <a href="#skills" class="hover:text-yellow-300">Umiejętności</a>
+        <a href="#contact" class="hover:text-yellow-300">Kontakt</a>
       </nav>
     </div>
   </header>
 
   <!-- HERO SECTION -->
-  <section class="bg-blue-600 text-white text-center py-20">
+  <section class="text-center py-20 text-yellow-300">
     <h2 class="text-4xl font-bold mb-4">Cześć! Jestem początkującym web developerem 🚀</h2>
     <p class="text-lg mb-6">Tworzę nowoczesne i responsywne strony internetowe.</p>
-    <a href="#contact" class="bg-white text-blue-600 font-semibold py-2 px-4 rounded shadow hover:bg-gray-100 transition">Zatrudnij mnie</a>
+    <a href="#contact" class="bg-yellow-300 text-black font-semibold py-2 px-4 rounded shadow hover:bg-yellow-400 transition">Zatrudnij mnie</a>
   </section>
 
   <!-- ABOUT -->
-  <section id="about" class="py-16 px-6 bg-white">
+  <section id="about" class="py-16 px-6 bg-gray-800 bg-opacity-70 text-white">
     <div class="max-w-3xl mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-4">O mnie</h3>
-      <p class="text-gray-700">
+      <h3 class="text-3xl font-bold mb-4 text-yellow-400">O mnie</h3>
+      <p class="text-gray-300">
         Mówią na mnie BRS, uczę się front-endu i szukam pierwszych zleceń jako freelancer. Lubię tworzyć rzeczy, które są proste, funkcjonalne i dobrze wyglądają.
       </p>
     </div>
   </section>
 
   <!-- PROJECTS -->
-  <section id="projects" class="py-16 px-6 bg-gray-100">
+  <section id="projects" class="py-16 px-6 bg-gray-900 bg-opacity-70">
     <div class="max-w-5xl mx-auto">
-      <h3 class="text-3xl font-bold text-center mb-10">Projekty</h3>
+      <h3 class="text-3xl font-bold text-center mb-10 text-yellow-400">Projekty</h3>
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white rounded shadow p-5">
-          <h4 class="text-xl font-semibold mb-2">Projekt 1</h4>
-          <p class="text-gray-600">Opis projektu, co zrobiłeś, jakich technologii użyłeś.</p>
+        <div class="bg-gray-800 rounded shadow p-5 text-white">
+          <h4 class="text-xl font-semibold mb-2 text-yellow-300">Projekt 1</h4>
+          <p class="text-gray-400">Opis projektu, co zrobiłeś, jakich technologii użyłeś.</p>
         </div>
-        <div class="bg-white rounded shadow p-5">
-          <h4 class="text-xl font-semibold mb-2">Projekt 2</h4>
-          <p class="text-gray-600">Opis projektu, co zrobiłeś, jakich technologii użyłeś.</p>
+        <div class="bg-gray-800 rounded shadow p-5 text-white">
+          <h4 class="text-xl font-semibold mb-2 text-yellow-300">Projekt 2</h4>
+          <p class="text-gray-400">Opis projektu, co zrobiłeś, jakich technologii użyłeś.</p>
         </div>
-        <div class="bg-white rounded shadow p-5">
-          <h4 class="text-xl font-semibold mb-2">Projekt 3</h4>
-          <p class="text-gray-600">Opis projektu, co zrobiłeś, jakich technologii użyłeś.</p>
+        <div class="bg-gray-800 rounded shadow p-5 text-white">
+          <h4 class="text-xl font-semibold mb-2 text-yellow-300">Projekt 3</h4>
+          <p class="text-gray-400">Opis projektu, co zrobiłeś, jakich technologii użyłeś.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- SKILLS -->
-  <section id="skills" class="py-16 px-6 bg-white">
-    <div class="max-w-3xl mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-6">Umiejętności</h3>
-      <ul class="flex flex-wrap justify-center gap-4 text-blue-700 font-semibold">
-        <li class="bg-blue-100 px-4 py-2 rounded">HTML</li>
-        <li class="bg-blue-100 px-4 py-2 rounded">CSS</li>
-        <li class="bg-blue-100 px-4 py-2 rounded">JavaScript</li>
-        <li class="bg-blue-100 px-4 py-2 rounded">Tailwind CSS</li>
-        <li class="bg-blue-100 px-4 py-2 rounded">Git</li>
+  <section id="skills" class="py-16 px-6 bg-gray-800 text-center">
+    <div class="max-w-3xl mx-auto">
+      <h3 class="text-3xl font-bold mb-6 text-yellow-400">Umiejętności</h3>
+      <ul class="flex flex-wrap justify-center gap-4 text-yellow-200 font-semibold">
+        <li class="bg-yellow-800 bg-opacity-30 px-4 py-2 rounded">HTML</li>
+        <li class="bg-yellow-800 bg-opacity-30 px-4 py-2 rounded">CSS</li>
+        <li class="bg-yellow-800 bg-opacity-30 px-4 py-2 rounded">JavaScript</li>
+        <li class="bg-yellow-800 bg-opacity-30 px-4 py-2 rounded">Tailwind CSS</li>
+        <li class="bg-yellow-800 bg-opacity-30 px-4 py-2 rounded">Git</li>
       </ul>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="py-16 px-6 bg-gray-100">
-    <div class="max-w-md mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-4">Kontakt</h3>
-      <p class="mb-6 text-gray-700">Jesteś zainteresowany współpracą? Napisz do mnie!</p>
-      <a href="mailto:twojemail@example.com" class="inline-block bg-blue-600 text-white px-6 py-3 rounded shadow hover:bg-blue-700 transition">
+  <section id="contact" class="py-16 px-6 bg-gray-900 text-center">
+    <div class="max-w-md mx-auto">
+      <h3 class="text-3xl font-bold mb-4 text-yellow-400">Kontakt</h3>
+      <p class="mb-6 text-gray-300">Jesteś zainteresowany współpracą? Napisz do mnie!</p>
+      <a href="mailto:twojemail@example.com" class="inline-block bg-yellow-400 text-black px-6 py-3 rounded shadow hover:bg-yellow-300 transition">
         Napisz maila
       </a>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="text-center py-6 text-sm text-gray-500">
+  <footer class="text-center py-6 text-sm text-gray-500 bg-black bg-opacity-30">
     © 2025 [Twoje Imię]. Wszelkie prawa zastrzeżone.
   </footer>
 
