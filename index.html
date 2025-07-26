@@ -22,6 +22,7 @@
       backdrop-filter: blur(2px);
       animation: floatUp linear infinite;
       z-index: 0;
+      transition: transform 0.2s ease;
     }
 
     @keyframes floatUp {
@@ -66,11 +67,46 @@
       position: relative;
       z-index: 10;
     }
+
+    #cursor {
+      width: 30px;
+      height: 30px;
+      border: 2px solid rgba(255, 215, 0, 0.8);
+      border-radius: 9999px;
+      position: fixed;
+      pointer-events: none;
+      z-index: 999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.08s ease-out;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+      backdrop-filter: blur(2px);
+    }
+
+    body.intro-active {
+      overflow: hidden;
+    }
+
+    #intro.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1s ease;
+    }
   </style>
 </head>
 <body class="font-sans">
+  <div id="cursor"></div>
 
-  <!-- DUŻO BĄBELKÓW -->
+  <!-- INTRO -->
+  <div id="intro" class="fixed inset-0 bg-black flex items-center justify-center text-yellow-400 z-[9999]">
+    <div class="text-center">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/User_icon_BLACK-01.png/480px-User_icon_BLACK-01.png" alt="BRS Logo" class="mx-auto w-32 h-32 mb-4 rounded-full">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-pulse">BRS Portfolio</h1>
+      <p class="text-lg md:text-xl mb-8 text-yellow-300">Gotowy, by wejść do środka?</p>
+      <button id="enterBtn" class="px-6 py-3 bg-yellow-400 text-black font-semibold rounded shadow hover:bg-yellow-300 transition">Wejdź do środka</button>
+    </div>
+  </div>
+
+  <!-- BĄBELKI -->
   <div class="bubble" style="left: 5%"></div>
   <div class="bubble" style="left: 10%"></div>
   <div class="bubble" style="left: 15%"></div>
@@ -172,5 +208,40 @@
     © 2025 [Twoje Imię]. Wszelkie prawa zastrzeżone.
   </footer>
 
+  <!-- SKRYPTY -->
+  <script>
+    const cursor = document.getElementById("cursor");
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+    });
+
+    const bubbles = document.querySelectorAll(".bubble");
+    document.addEventListener("mousemove", (e) => {
+      bubbles.forEach(bubble => {
+        const rect = bubble.getBoundingClientRect();
+        const dx = e.clientX - (rect.left + rect.width / 2);
+        const dy = e.clientY - (rect.top + rect.height / 2);
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        if (distance < 60) {
+          bubble.style.transform = `translate(${dx * 0.2}px, ${dy * 0.2}px)`;
+        } else {
+          bubble.style.transform = "";
+        }
+      });
+    });
+
+    document.body.classList.add("intro-active");
+
+    document.getElementById("enterBtn").addEventListener("click", () => {
+      const intro = document.getElementById("intro");
+      intro.classList.add("hidden");
+      setTimeout(() => {
+        intro.remove();
+        document.body.classList.remove("intro-active");
+      }, 1000);
+    });
+  </script>
 </body>
 </html>
