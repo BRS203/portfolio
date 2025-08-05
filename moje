@@ -2,246 +2,283 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Moje Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DevBRS – Nowoczesne strony www w 7 dni</title>
+
+  <!-- SEO -->
+  <meta name="description" content="DevBRS — projektuję szybkie, responsywne strony i landing page. Pakiety: One-Page, Modernizacja, Portfolio. Darmowa konsultacja 15 min." />
+  <meta name="keywords" content="strony internetowe, landing page, web developer, freelancer, modernizacja strony, portfolio online" />
+  <meta property="og:title" content="DevBRS – Nowoczesne strony www w 7 dni" />
+  <meta property="og:description" content="Szybkie i nowoczesne strony. Darmowa konsultacja 15 min. Pakiety od 499 zł." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="lyra-logo.png" />
+  <meta property="og:locale" content="pl_PL" />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "DevBRS",
+    "jobTitle": "Web Developer",
+    "url": "https://twojadomena.pl",
+    "image": "https://twojadomena.pl/lyra-logo.png",
+    "knowsAbout": ["HTML","CSS","JavaScript","Tailwind","Performance"],
+    "brand": {"@type":"Brand","name":"DevBRS"},
+    "sameAs": []
+  }
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body {
-      background: linear-gradient(135deg, #1f1f1f, #3a3a3a);
-      color: #e6e6e6;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .bubble {
-      position: absolute;
-      border-radius: 9999px;
-      background: rgba(255, 215, 0, 0.3);
-      border: 1px solid rgba(255, 215, 0, 0.6);
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
-      backdrop-filter: blur(2px);
-      animation: floatUp linear infinite;
-      z-index: 0;
-      transition: transform 0.2s ease;
-    }
-
-    @keyframes floatUp {
-      0% {
-        transform: translateY(100vh) scale(1);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-200px) scale(1.2);
-        opacity: 0;
-      }
-    }
-
-    .bubble:nth-child(n) {
-      width: 12px;
-      height: 12px;
-      animation-duration: 6s;
-    }
-    .bubble:nth-child(3n) {
-      width: 8px;
-      height: 8px;
-      animation-duration: 4s;
-      animation-delay: 1s;
-    }
-    .bubble:nth-child(4n) {
-      width: 10px;
-      height: 10px;
-      animation-duration: 5s;
-      animation-delay: 0.5s;
-    }
-    .bubble:nth-child(5n) {
-      width: 14px;
-      height: 14px;
-      animation-duration: 4.5s;
-      animation-delay: 0.8s;
-    }
-
-    header, section, footer {
-      position: relative;
-      z-index: 10;
-    }
-
-    #cursor {
-      width: 30px;
-      height: 30px;
-      border: 2px solid rgba(255, 215, 0, 0.8);
-      border-radius: 9999px;
-      position: fixed;
-      pointer-events: none;
-      z-index: 999;
-      transform: translate(-50%, -50%);
-      transition: transform 0.08s ease-out;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-      backdrop-filter: blur(2px);
-    }
-
-    body.intro-active {
-      overflow: hidden;
-    }
-
-    #intro.hidden {
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 1s ease;
-    }
+    html, body { margin:0; padding:0; height:100%; background:#000; color:#FFD700; }
+    canvas#binaryCanvas { position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none; }
+    header, section, footer, nav { position:relative; z-index:1; }
+    .fade-in { opacity:0; transform:translateY(16px); animation:fadeInUp .9s ease forwards; }
+    @keyframes fadeInUp { to { opacity:1; transform:translateY(0); } }
+    /* active link underline */
+    .nav-link.active { color:#fde68a; }
   </style>
 </head>
-<body class="font-sans">
-  <div id="cursor"></div>
+<body class="font-sans scroll-smooth">
 
-  <!-- INTRO -->
-  <div id="intro" class="fixed inset-0 bg-black flex items-center justify-center text-yellow-400 z-[9999]">
-    <div class="text-center">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/User_icon_BLACK-01.png/480px-User_icon_BLACK-01.png" alt="BRS Logo" class="mx-auto w-32 h-32 mb-4 rounded-full">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-pulse">BRS Portfolio</h1>
-      <p class="text-lg md:text-xl mb-8 text-yellow-300">Gotowy, by wejść do środka?</p>
-      <button id="enterBtn" class="px-6 py-3 bg-yellow-400 text-black font-semibold rounded shadow hover:bg-yellow-300 transition">Wejdź do środka</button>
-    </div>
-  </div>
+  <!-- MATRIX BACKGROUND -->
+  <canvas id="binaryCanvas" aria-hidden="true"></canvas>
 
-  <!-- BĄBELKI -->
-  <div class="bubble" style="left: 5%"></div>
-  <div class="bubble" style="left: 10%"></div>
-  <div class="bubble" style="left: 15%"></div>
-  <div class="bubble" style="left: 20%"></div>
-  <div class="bubble" style="left: 25%"></div>
-  <div class="bubble" style="left: 30%"></div>
-  <div class="bubble" style="left: 35%"></div>
-  <div class="bubble" style="left: 40%"></div>
-  <div class="bubble" style="left: 45%"></div>
-  <div class="bubble" style="left: 50%"></div>
-  <div class="bubble" style="left: 55%"></div>
-  <div class="bubble" style="left: 60%"></div>
-  <div class="bubble" style="left: 65%"></div>
-  <div class="bubble" style="left: 70%"></div>
-  <div class="bubble" style="left: 75%"></div>
-  <div class="bubble" style="left: 80%"></div>
-  <div class="bubble" style="left: 85%"></div>
-  <div class="bubble" style="left: 90%"></div>
-  <div class="bubble" style="left: 95%"></div>
-
-  <!-- NAVBAR -->
-  <header class="bg-black bg-opacity-30 shadow-md sticky top-0 z-50 text-yellow-400">
-    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold">👨‍💻 Moje Portfolio</h1>
-      <nav class="space-x-4">
-        <a href="#about" class="hover:text-yellow-300">O mnie</a>
-        <a href="#projects" class="hover:text-yellow-300">Projekty</a>
-        <a href="#skills" class="hover:text-yellow-300">Umiejętności</a>
-        <a href="#contact" class="hover:text-yellow-300">Kontakt</a>
+  <!-- HEADER -->
+  <header class="bg-black/40 backdrop-blur sticky top-0 z-50 border-b border-yellow-600/20">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <img src="lyra-logo.png" alt="Logo DevBRS" class="w-10 h-10 rounded-full shadow">
+        <span class="text-xl font-extrabold tracking-wide text-yellow-300">DevBRS</span>
+      </div>
+      <nav class="flex items-center gap-5 text-yellow-200">
+        <a href="#home" class="nav-link hover:text-yellow-300">Start</a>
+        <a href="#services" class="nav-link hover:text-yellow-300">Oferta</a>
+        <a href="#projects" class="nav-link hover:text-yellow-300">Portfolio</a>
+        <a href="#process" class="nav-link hover:text-yellow-300">Proces</a>
+        <a href="#testimonials" class="nav-link hover:text-yellow-300">Opinie</a>
+        <a href="#contact" class="nav-link hover:text-yellow-300">Kontakt</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
-  <section class="text-center py-20 text-yellow-300">
-    <h2 class="text-4xl font-bold mb-4">Cześć! Jestem początkującym web developerem 🚀</h2>
-    <p class="text-lg mb-6">Tworzę nowoczesne i responsywne strony internetowe.</p>
-    <a href="#contact" class="bg-yellow-300 text-black font-semibold py-2 px-4 rounded shadow hover:bg-yellow-400 transition">Zatrudnij mnie</a>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="py-16 px-6 bg-gray-800 bg-opacity-70 text-white">
-    <div class="max-w-3xl mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-4 text-yellow-400">O mnie</h3>
-      <p class="text-gray-300">
-        Mówią na mnie BRS, uczę się front-endu i szukam pierwszych zleceń jako freelancer. Lubię tworzyć rzeczy, które są proste, funkcjonalne i dobrze wyglądają.
-      </p>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="py-16 px-6 bg-gray-900 bg-opacity-70">
-    <div class="max-w-5xl mx-auto">
-      <h3 class="text-3xl font-bold text-center mb-10 text-yellow-400">Projekty</h3>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-gray-800 rounded shadow p-5 text-white">
-          <h4 class="text-xl font-semibold mb-2 text-yellow-300">Projekt 1</h4>
-          <p class="text-gray-400">Opis projektu, co zrobiłeś, jakich technologii użyłeś.</p>
-        </div>
-        <div class="bg-gray-800 rounded shadow p-5 text-white">
-          <h4 class="text-xl font-semibold mb-2 text-yellow-300">Projekt 2</h4>
-          <p class="text-gray-400">Opis projektu, co zrobiłeś, jakich technologii użyłeś.</p>
-        </div>
-        <div class="bg-gray-800 rounded shadow p-5 text-white">
-          <h4 class="text-xl font-semibold mb-2 text-yellow-300">Projekt 3</h4>
-          <p class="text-gray-400">Opis projektu, co zrobiłeś, jakich technologii użyłeś.</p>
+  <!-- HERO -->
+  <section id="home" class="py-20 fade-in">
+    <div class="container mx-auto px-6">
+      <div class="border border-yellow-400 rounded-2xl p-8 bg-black/60 max-w-5xl mx-auto shadow-2xl">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <img src="lyra-logo.png" alt="DevBRS znak" class="w-28 h-28 rounded-full shadow-lg">
+          <div class="text-center md:text-left">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-3">Nowoczesne strony w <span class="underline decoration-yellow-400/60">7 dni</span></h1>
+            <p class="text-lg text-yellow-100/90 mb-6">Projektuję szybkie, responsywne i czytelne strony. Darmowa konsultacja 15 min – sprawdzimy, co da się zrobić u Ciebie.</p>
+            <div class="flex flex-wrap gap-3 justify-center md:justify-start">
+              <a href="#contact" class="bg-yellow-400 text-black font-semibold py-2.5 px-5 rounded-lg shadow hover:bg-yellow-500 transition">Umów konsultację</a>
+              <a href="#projects" class="border border-yellow-400/70 text-yellow-200 py-2.5 px-5 rounded-lg hover:bg-yellow-400/10 transition">Zobacz portfolio</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <section id="skills" class="py-16 px-6 bg-gray-800 text-center">
-    <div class="max-w-3xl mx-auto">
-      <h3 class="text-3xl font-bold mb-6 text-yellow-400">Umiejętności</h3>
-      <ul class="flex flex-wrap justify-center gap-4 text-yellow-200 font-semibold">
-        <li class="bg-yellow-800 bg-opacity-30 px-4 py-2 rounded">HTML</li>
-        <li class="bg-yellow-800 bg-opacity-30 px-4 py-2 rounded">CSS</li>
-        <li class="bg-yellow-800 bg-opacity-30 px-4 py-2 rounded">JavaScript</li>
-        <li class="bg-yellow-800 bg-opacity-30 px-4 py-2 rounded">Tailwind CSS</li>
-        <li class="bg-yellow-800 bg-opacity-30 px-4 py-2 rounded">Git</li>
-      </ul>
+  <!-- OFERTA / PAKIETY -->
+  <section id="services" class="py-16 px-6 fade-in">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-10">Oferta</h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <!-- Pakiet 1 -->
+        <div class="border border-yellow-400 rounded-xl p-6 bg-black/50 shadow">
+          <h3 class="text-xl font-semibold mb-2">One-Page / Landing</h3>
+          <p class="text-yellow-100/80 mb-4">Szybka strona wizytówka pod kampanię lub start firmy.</p>
+          <ul class="text-sm space-y-2 mb-5">
+            <li>• Sekcje: oferta, o firmie, CTA, kontakt</li>
+            <li>• Mobile-first, szybkie ładowanie</li>
+            <li>• Podpięcie analityki</li>
+          </ul>
+          <div class="flex items-baseline justify-between">
+            <span class="text-2xl font-bold">od 499 zł</span>
+            <a href="#contact" class="underline hover:text-yellow-300">Zamów</a>
+          </div>
+        </div>
+        <!-- Pakiet 2 -->
+        <div class="border border-yellow-400 rounded-xl p-6 bg-black/50 shadow">
+          <h3 class="text-xl font-semibold mb-2">Modernizacja strony</h3>
+          <p class="text-yellow-100/80 mb-4">Odświeżenie wyglądu, poprawa szybkości i RWD.</p>
+          <ul class="text-sm space-y-2 mb-5">
+            <li>• Redesign bez zmiany treści</li>
+            <li>• Optymalizacja Core Web Vitals</li>
+            <li>• Formularze + mapy + SEO</li>
+          </ul>
+          <div class="flex items-baseline justify-between">
+            <span class="text-2xl font-bold">od 699 zł</span>
+            <a href="#contact" class="underline hover:text-yellow-300">Zamów</a>
+          </div>
+        </div>
+        <!-- Pakiet 3 -->
+        <div class="border border-yellow-400 rounded-xl p-6 bg-black/50 shadow">
+          <h3 class="text-xl font-semibold mb-2">Portfolio / CV online</h3>
+          <p class="text-yellow-100/80 mb-4">Strona osobista dla freelancerów, artystów, fotografów.</p>
+          <ul class="text-sm space-y-2 mb-5">
+            <li>• Galeria prac, referencje</li>
+            <li>• Integracje social / kontakt</li>
+            <li>• Prosty panel edycji treści</li>
+          </ul>
+          <div class="flex items-baseline justify-between">
+            <span class="text-2xl font-bold">od 599 zł</span>
+            <a href="#contact" class="underline hover:text-yellow-300">Zamów</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="py-16 px-6 bg-gray-900 text-center">
-    <div class="max-w-md mx-auto">
-      <h3 class="text-3xl font-bold mb-4 text-yellow-400">Kontakt</h3>
-      <p class="mb-6 text-gray-300">Jesteś zainteresowany współpracą? Napisz do mnie!</p>
-      <a href="mailto:twojemail@example.com" class="inline-block bg-yellow-400 text-black px-6 py-3 rounded shadow hover:bg-yellow-300 transition">
-        Napisz maila
-      </a>
+  <!-- PORTFOLIO -->
+  <section id="projects" class="py-16 px-6 fade-in">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-10">Portfolio</h2>
+      <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <!-- Projekt 1 -->
+        <article class="border border-yellow-400 rounded-xl p-5 bg-black/40 shadow">
+          <h3 class="text-xl font-semibold mb-2">Sklepik „HerbaGlow” (demo)</h3>
+          <p class="text-yellow-100/80 mb-3">Landing dla marki kosmetycznej. Sekcja hero, opinie, FAQ, CTA.</p>
+          <ul class="text-sm mb-4 space-y-1">
+            <li>• Wynik Lighthouse: 95+</li>
+            <li>• Sekcje: hero, korzyści, recenzje, zakup</li>
+          </ul>
+          <div class="flex justify-between items-center">
+            <span class="text-sm opacity-80">HTML • Tailwind • JS</span>
+            <a href="#" class="underline hover:text-yellow-300">Podgląd</a>
+          </div>
+        </article>
+        <!-- Projekt 2 -->
+        <article class="border border-yellow-400 rounded-xl p-5 bg-black/40 shadow">
+          <h3 class="text-xl font-semibold mb-2">Studio „FotoNova” (demo)</h3>
+          <p class="text-yellow-100/80 mb-3">Portfolio fotografa: galerie, lightbox, kontakt.</p>
+          <ul class="text-sm mb-4 space-y-1">
+            <li>• Lazy-load obrazów</li>
+            <li>• Kontakt 1-klik: WhatsApp / E-mail</li>
+          </ul>
+          <div class="flex justify-between items-center">
+            <span class="text-sm opacity-80">HTML • Tailwind • JS</span>
+            <a href="#" class="underline hover:text-yellow-300">Podgląd</a>
+          </div>
+        </article>
+        <!-- Projekt 3 -->
+        <article class="border border-yellow-400 rounded-xl p-5 bg-black/40 shadow">
+          <h3 class="text-xl font-semibold mb-2">„FitCoach” (demo)</h3>
+          <p class="text-yellow-100/80 mb-3">Strona trenera personalnego: cennik, harmonogram, lead-form.</p>
+          <ul class="text-sm mb-4 space-y-1">
+            <li>• Konwersje: formularz 3-polowy</li>
+            <li>• Mikro-animacje CTA</li>
+          </ul>
+          <div class="flex justify-between items-center">
+            <span class="text-sm opacity-80">HTML • Tailwind • JS</span>
+            <a href="#" class="underline hover:text-yellow-300">Podgląd</a>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="text-center py-6 text-sm text-gray-500 bg-black bg-opacity-30">
-    © 2025 [Twoje Imię]. Wszelkie prawa zastrzeżone.
+  <!-- PROCES -->
+  <section id="process" class="py-16 px-6 text-center fade-in">
+    <div class="container mx-auto">
+      <div class="border border-yellow-400 rounded-2xl p-6 bg-black/60 max-w-5xl mx-auto shadow">
+        <h2 class="text-3xl font-bold mb-6">Jak pracuję</h2>
+        <div class="grid md:grid-cols-4 gap-6 text-left">
+          <div><h4 class="font-semibold mb-1">1. Rozmowa (15 min)</h4><p class="text-yellow-100/80">Twoje cele + szybki audyt.</p></div>
+          <div><h4 class="font-semibold mb-1">2. Prototyp (24–48 h)</h4><p class="text-yellow-100/80">Dostajesz szkic + wycenę.</p></div>
+          <div><h4 class="font-semibold mb-1">3. Realizacja (3–7 dni)</h4><p class="text-yellow-100/80">Iteracje, testy, SEO.</p></div>
+          <div><h4 class="font-semibold mb-1">4. Start + wsparcie</h4><p class="text-yellow-100/80">Publikacja i mini-instrukcja.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPINIE -->
+  <section id="testimonials" class="py-16 px-6 fade-in">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-10">Opinie</h2>
+      <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <blockquote class="border border-yellow-400 rounded-xl p-5 bg-black/50 shadow">
+          <p class="italic text-yellow-100/90">„Szybko, konkretnie i bez zbędnego gadania. Landing gotowy w 4 dni – sprzedaż poszła w górę.”</p>
+          <cite class="block mt-3 text-sm opacity-80">— Marta, e-commerce</cite>
+        </blockquote>
+        <blockquote class="border border-yellow-400 rounded-xl p-5 bg-black/50 shadow">
+          <p class="italic text-yellow-100/90">„Odświeżenie strony i optymalizacja. Wynik w PageSpeed z 54 na 96. Polecam!”</p>
+          <cite class="block mt-3 text-sm opacity-80">— Paweł, usługi lokalne</cite>
+        </blockquote>
+        <blockquote class="border border-yellow-400 rounded-xl p-5 bg-black/50 shadow">
+          <p class="italic text-yellow-100/90">„Portfolio wygląda mega. Dzięki temu złapałam 3 zlecenia w tydzień.”</p>
+          <cite class="block mt-3 text-sm opacity-80">— Ola, fotograf</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="contact" class="py-16 px-6 fade-in">
+    <div class="container mx-auto">
+      <div class="border border-yellow-400 rounded-2xl p-6 bg-black/60 max-w-xl mx-auto shadow">
+        <h2 class="text-3xl font-bold text-center mb-4">Kontakt</h2>
+        <p class="text-center text-yellow-100/90 mb-6">Chcesz darmową konsultację 15 min? Napisz lub kliknij WhatsApp.</p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="mailto:dawidbartosz60@gmail.com?subject=Zapytanie%20o%20stronę%20www%20-%20DevBRS"
+             class="inline-block bg-yellow-400 text-black px-6 py-3 rounded shadow hover:bg-yellow-500 transition text-center">
+            Napisz e-mail
+          </a>
+          <a href="https://wa.me/48XXXXXXXXX" class="inline-block border border-yellow-400 text-yellow-200 px-6 py-3 rounded hover:bg-yellow-400/10 transition text-center">
+            WhatsApp
+          </a>
+        </div>
+        <p class="text-xs text-center mt-4 opacity-75">Dostępność: pn–pt 10:00–18:00</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="text-center py-6 text-sm text-yellow-500 bg-black/30 border-t border-yellow-600/20">
+    © <span id="year"></span> DevBRS. Wszystkie prawa zastrzeżone.
   </footer>
 
-  <!-- SKRYPTY -->
+  <!-- SCRIPTS -->
   <script>
-    const cursor = document.getElementById("cursor");
-    document.addEventListener("mousemove", (e) => {
-      cursor.style.left = e.clientX + "px";
-      cursor.style.top = e.clientY + "px";
-    });
+    // Matrix background
+    const canvas = document.getElementById("binaryCanvas");
+    const ctx = canvas.getContext("2d");
+    function resizeCanvas(){ canvas.width = innerWidth; canvas.height = innerHeight; }
+    addEventListener("resize", resizeCanvas); resizeCanvas();
+    const bin="01"; const fontSize=14; let columns=canvas.width/fontSize;
+    let drops=Array(Math.floor(columns)).fill(1);
+    function draw(){
+      ctx.fillStyle="rgba(0,0,0,0.06)";
+      ctx.fillRect(0,0,canvas.width,canvas.height);
+      ctx.fillStyle="#FFD700"; ctx.font=fontSize+"px monospace";
+      for(let i=0;i<drops.length;i++){
+        const t=bin[Math.floor(Math.random()*bin.length)];
+        ctx.fillText(t,i*fontSize,drops[i]*fontSize);
+        if(drops[i]*fontSize>canvas.height && Math.random()>0.975) drops[i]=0;
+        drops[i]++;
+      }
+    }
+    setInterval(draw,33);
 
-    const bubbles = document.querySelectorAll(".bubble");
-    document.addEventListener("mousemove", (e) => {
-      bubbles.forEach(bubble => {
-        const rect = bubble.getBoundingClientRect();
-        const dx = e.clientX - (rect.left + rect.width / 2);
-        const dy = e.clientY - (rect.top + rect.height / 2);
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < 60) {
-          bubble.style.transform = `translate(${dx * 0.2}px, ${dy * 0.2}px)`;
-        } else {
-          bubble.style.transform = "";
+    // Active nav link on scroll
+    const links=[...document.querySelectorAll(".nav-link")];
+    const ids=links.map(a=>document.querySelector(a.getAttribute("href")));
+    const opt={root:null, rootMargin:"-50% 0px -40% 0px", threshold:0};
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        const idx=ids.indexOf(e.target);
+        if(idx>-1){
+          if(e.isIntersecting){ links.forEach(l=>l.classList.remove("active")); links[idx].classList.add("active"); }
         }
       });
-    });
+    },opt);
+    ids.forEach(sec=>sec && io.observe(sec));
 
-    document.body.classList.add("intro-active");
-
-    document.getElementById("enterBtn").addEventListener("click", () => {
-      const intro = document.getElementById("intro");
-      intro.classList.add("hidden");
-      setTimeout(() => {
-        intro.remove();
-        document.body.classList.remove("intro-active");
-      }, 1000);
-    });
+    // Year
+    document.getElementById("year").textContent=new Date().getFullYear();
   </script>
 </body>
 </html>
