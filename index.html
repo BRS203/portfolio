@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HerbaGlow – Naturalne piękno</title>
+  <meta name="description" content="HerbaGlow – naturalne kosmetyki. Odkryj moc roślin.">
+  <!-- TailwindCSS JIT -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Preconnect dla wydajności -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Systemowe fonty dla szybkości ładowania -->
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
+  </style>
+</head>
+<body class="antialiased text-gray-800 bg-white scroll-smooth">
+  <!-- Hero Section -->
+  <section id="hero" class="min-h-screen flex items-center justify-center bg-gradient-to-r from-green-200 to-green-50 p-6">
+    <div class="text-center max-w-xl">
+ <img src="herbalogo.png" alt="Certyfikowana jakość" loading="lazy" class="mx-auto mb-auto h-auto">
+ <a href="#zakup" class="inline-block bg-green-600 text-white py-3 px-6 rounded-md hover:bg-green-700 transition">Kup Teraz</a>
+    </div>
+  </section>
+
+  <!-- Korzyści Section -->
+  <section id="korzysci" class="py-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">Dlaczego warto wybrać HerbaGlow?</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <img src="lisc.png" alt="Naturalne składniki" loading="lazy" class="mx-auto mb-4 h-20">
+          <h3 class="font-semibold text-xl mb-2">Naturalne Składniki</h3>
+          <p>100% wyciągi roślinne, bez sztucznych dodatków.</p>
+        </div>
+        <div class="text-center">
+          <img src="ok.png" alt="Certyfikowana jakość" loading="lazy" class="mx-auto mb-4 h-20">
+          <h3 class="font-semibold text-xl mb-2">Certyfikowana Jakość</h3>
+          <p>Testowane dermatologicznie, cruelty-free.</p>
+        </div>
+        <div class="text-center">
+          <img src="kropla.png" alt="Skuteczne działanie" loading="lazy" class="mx-auto mb-4 h-20">
+          <h3 class="font-semibold text-xl mb-2">Skuteczne Działanie</h3>
+          <p>Widoczne rezultaty już po pierwszym użyciu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recenzje Section -->
+  <section id="recenzje" class="py-16 px-6 bg-green-50">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">Opinie naszych klientek</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <blockquote class="p-6 bg-white rounded-lg shadow">
+          <p class="italic mb-4">„Krem HerbaGlow odmienił moją skórę – jest promienna i gładka!”</p>
+          <cite class="font-semibold">– Anna, 32 lata</cite>
+        </blockquote>
+        <blockquote class="p-6 bg-white rounded-lg shadow">
+          <p class="italic mb-4">„Serum natychmiast nawilża i koi podrażnienia. Polecam!”</p>
+          <cite class="font-semibold">– Magdalena, 27 lat</cite>
+        </blockquote>
+        <blockquote class="p-6 bg-white rounded-lg shadow">
+          <p class="italic mb-4">„Piękny zapach i naturalny skład. Moja cera nigdy nie wyglądała lepiej!”</p>
+          <cite class="font-semibold">– Katarzyna, 45 lat</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-8">FAQ</h2>
+      <div class="space-y-4">
+        <div>
+          <button aria-expanded="false" aria-controls="faq1" class="faq-button w-full text-left p-4 bg-white rounded-lg shadow flex justify-between items-center focus:outline-none cursor-pointer">
+            <span>Jakie składniki znajdują się w kremie?</span>
+            <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="faq1" class="faq-content hidden p-4 bg-gray-50 rounded-b-lg">
+            <p>Ziołowy ekstrakt z rumianku, aloes, olejek arganowy oraz witamina E.</p>
+          </div>
+        </div>
+        <div>
+          <button aria-expanded="false" aria-controls="faq2" class="faq-button w-full text-left p-4 bg-white rounded-lg shadow flex justify-between items-center focus:outline-none cursor-pointer">
+            <span>Jak długo trwa wysyłka?</span>
+            <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="faq2" class="faq-content hidden p-4 bg-gray-50 rounded-b-lg">
+            <p>Wysyłka zajmuje 1-3 dni robocze na terenie Polski.</p>
+          </div>
+        </div>
+        <div>
+          <button aria-expanded="false" aria-controls="faq3" class="faq-button w-full text-left p-4 bg-white rounded-lg shadow flex justify-between items-center focus:outline-none cursor-pointer">
+            <span>Czy produkty są cruelty-free?</span>
+            <svg class="w-6 h-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="faq3" class="faq-content hidden p-4 bg-gray-50 rounded-b-lg">
+            <p>Tak, nasze produkty nie są testowane na zwierzętach.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Zakup Section -->
+  <section id="zakup" class="py-16 px-6 bg-green-100">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-6">Wybierz swój produkt</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="p-6 bg-white rounded-lg shadow">
+          <h3 class="text-2xl font-semibold mb-4">HerbaGlow Krem</h3>
+          <p class="mb-4">50 ml naturalnego kremu nawilżającego.</p>
+          <p class="text-xl font-bold mb-4">79 zł</p>
+          <button class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition">Dodaj do koszyka</button>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow">
+          <h3 class="text-2xl font-semibold mb-4">HerbaGlow Serum</h3>
+          <p class="mb-4">30 ml skoncentrowanego serum odżywczego.</p>
+          <p class="text-xl font-bold mb-4">99 zł</p>
+          <button class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition">Dodaj do koszyka</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 text-center text-sm text-gray-600">
+    © 2025 HerbaGlow. Wszelkie prawa zastrzeżone.
+  </footer>
+
+  <!-- FAQ Toggle Script -->
+  <script>
+    document.querySelectorAll('.faq-button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        const content = document.getElementById(btn.getAttribute('aria-controls'));
+        content.classList.toggle('hidden');
+        btn.querySelector('svg').classList.toggle('rotate-180');
+      });
+    });
+  </script>
+</body>
+</html>
